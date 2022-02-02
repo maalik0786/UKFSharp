@@ -3,20 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DemoApp"
-        xmlns:oxy="http://oxyplot.org/wpf"
-                xmlns:dg2d="http://gu.se/DataGrid2D"
-        mc:Ignorable="d"
+				xmlns:oxy="http://oxyplot.org/wpf"
+				mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
 
     <DockPanel>
         <Grid DockPanel.Dock="Bottom" >
-
-
-            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1">
+					<!-- ReSharper disable once Xaml.IndexOutOfGridDefinition -->
+					<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1">
             <TabControl>
                 <TabItem Header="Graph">
-                    <oxy:Plot  x:Name="Plot1" Grid.Column="0"  >
+                    <oxy:Plot  x:Name="Plot1">
                         <oxy:Plot.Series>
                                 <oxy:AreaSeries ItemsSource="{Binding Estimates}"  Title="Estimate Deviation"    DataFieldX="Time" DataFieldY="LowerDeviation" DataFieldX2="Time" DataFieldY2="UpperDeviation" />
                                 <oxy:LineSeries ItemsSource="{Binding Measurements}"   Title="Measurement"   DataFieldX="Time" DataFieldY="Value"  MarkerType="Cross"/>
@@ -30,17 +27,10 @@
                     </oxy:Plot>
                 </TabItem>
                 <TabItem Header="DataTable">
-                    <DataGrid  Grid.Column="1" x:Name="DataGrid1" 
-                    HorizontalAlignment="Stretch" 
-                    VerticalAlignment="Stretch"
-                    ItemsSource="{Binding Measurements}"/>
+                    <DataGrid x:Name="DataGrid1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding Measurements}"/>
                 </TabItem>
             </TabControl>
-
-       
-
-        </Grid>
-
-        </Grid>
+					</Grid>
+				</Grid>
     </DockPanel>
 </Window>
